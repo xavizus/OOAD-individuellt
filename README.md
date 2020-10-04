@@ -99,9 +99,36 @@ const ThirdBurger = burgerFactory.createBurger("Unknown!");
 ```
 
 ## Facade Pattern
-**Facade Pattern** är ett strukturerat designmönster, där hela poängen egentligen är att göra en metod eller klass mindre abstrakt och / eller mindre komplicerad, för användaren som skall använda metoden eller klassen.
+**Facade Pattern** är ett strukturerat designmönster, där hela poängen egentligen är att göra en metod eller klass mindre abstrakt, för användaren som skall använda metoden eller klassen.
 
 Ett praktiskt exempel är t.ex. när du ska göra ett POST anrop med hjälp av fetch så behöver du ha med en del overhead information för att utföra ett post-anropp.
+Om du redan vet att du alltid kommer posta med samma overhead information, så kan du bygga en fasad för den orginella funktionen.
+
+Nedan har du ett exempel på hur det skulle kunna se ut att bygga en fasad för en funktion:
+```JavaScript
+
+async function fetchData(url, method = "GET", data = undefined) {
+    let header = {
+        "method": method.toUpperCase(),
+    };
+    if(data) {
+        header.headers = {
+            "Content-Type": "application/json"
+        }
+        header.body = JSON.stringify(data);
+    }
+    return await fetch(url, header).then(response => resoponse.json());
+}
+
+
+function post(url, body) {
+    return fetchData(url, "POST", body);
+}
+
+function get(url) {
+    return fetchData(url);
+}
+```
 
 
 ## Constructor Pattern

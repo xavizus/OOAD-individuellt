@@ -205,23 +205,36 @@ Handlar främst om kravspecifika
 ## 1. Strategi 
 
 ### Intervju
-Jag äger idag en hamburgareresturang där jag vill att klienter ska kunna få fram en lista på olika hamburgare och priser på hamburgarna, dessutom önskar jag att den ska visa vad hamburgaren har för innehåll. Sedan skall klienten kunna beställa en specifik hamburgare. Jag vill i framtiden också kunna enkelt utöka utbudet till andra typer av rätter, exempelvis pizzor och / eller asiatiskt.
+Jag äger idag en pizzaresturang där jag vill att sina matgäster snabbt och enkelt skall kunna få fram en lista på olika pizzor och priser på pizzorna, samt produkternas innehåll för att spara tid för personalen att upprepa sig vad varje produkt innehåller. Sedan skall matgästerna kunna beställa en specifik pizza. Jag vill i framtiden också kunna enkelt utöka utbudet till andra typer av rätter, exempelvis hamburgare och / eller asiatiskt eller någon annan typ av rätt.
 
-Om jag utökar med andra typer av rätter, så vill jag att klienter ska få välja vilken typ av rätt som skall visa. Klienten ska bara kunna välja en rätt.
+Om jag utökar med andra typer av rätter, så vill jag att matgästerna ska få välja vilken typ av rätt som skall visa. Klienten ska bara kunna välja en rätt.
+
+
+### Vem är produkten för
+Produkten kommer att användas av matgästerna
+
+### Varför behövs produkten
+Den möjligör för matgästerna att dem enklare och snabbare skall kunna beställa sin rätt utan att behöva kommunicera med en kassör.
+Samt så lättar det för personalen för de vanligaste frågorna, så som pris och vad maten innehåller.
 
 ## 2. Omfattning
+Utifrån intervjun, så är det klart att det är främst tre punkter som ligger i vikt för resturangägaren:
 
 ### Innehåll
 - Önskar att applikationen skall visa en lista på olika rätter med namn, innehåll och pris.
 ### Funktionalitet
-- Skall kunna beställa en typ av rätt.
-- Skall enkelt utökas till andra typer av rätter
+- Matgästerna skall kunna beställa en rätt.
+- Applikationen ska enkelt kunna utökas med andra typer av rätter
 
 ## 3. Dokumentation
 
-I utvecklingsprojektet, så är planen att använda mig av designmönstret Factory pattern. Orsaken är att detta designpattern gör det enklare att skapa olika objekt beroende på användarens inmatning av data.
+I utvecklingsprojektet, så är planen att använda mig av designmönstret Factory pattern. Orsaken är att detta designpattern gör det enklare att skapa olika objekt beroende på användarens inmatning av data, vilket är ett av kraven från intervjun med ägaren.
 
-Utöver Factory pattern så kommer jag också använda mig av Facade pattern för att förenkla två komplicerade funktioner, en modul som heter readline med metoden question. Tyvärr är inte readline modulen asynkront så jag behöver göra så att min kod inte fortsätter när denna metod kallas på. Samt så behöver jag ett lättare sätt att kontrollera att användarens inmatade data är validerad.
+Utöver Factory pattern så kommer jag också använda mig av Facade pattern för att förenkla två komplicerade funktioner.
+
+Där första är en modul som heter `readline`, som innehåller en metod jag vill använda som heter `question`. Tyvärr är inte readline modulen asynkront så jag behöver göra så att min kod inte fortsätter när denna metod kallas på. 
+
+Den andra funktionen så behöver jag ett lättare sätt att kontrollera att användarens inmatade data är validerad.
 
 ### Klassdiagram
 Jag upptäckte vid utveckligen av applikationen att både dishTemplate och foodTypeTemplate klasserna behövde metoder att kunna kommunicera med själva användaren, och där av behövde lägga till metoderna: askUserForFoodType och askUserForDishType.

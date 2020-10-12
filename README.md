@@ -97,7 +97,7 @@ SecondBurger.printBurger(); // Outputs: You've choosen a Natural Burger
 const ThirdBurger = burgerFactory.createBurger("Unknown!");
 ```
 I och med att vi använder oss av Factory pattern, gör att vi också kan utöka vår factory enkelt, utan att påverka befintlig kodbas. 
-Så om vi skulle vilja lägga till exempelvis, Vegan burger, så skapar vi en veganBurger klass och lägger till den i allowedBurgers.
+Om vi skulle vilja lägga till exempelvis, Vegan burger, så skapar vi en veganBurger klass och lägger till den i allowedBurgers.
 Ex.
 ```javascript
 class VeganBurger extends BurgerTemplate {
@@ -214,6 +214,7 @@ Om jag utökar med andra typer av rätter, så vill jag att klienter ska få vä
 - Skall kunna beställa en typ av rätt.
 - Skall enkelt utökas till andra typer av rätter
 
-## 
+## Klassdiagram
+![A picture of aClassDiagram](./ClassDiagram.png)
 
 # 4. Dokumentation

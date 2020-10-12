@@ -56,7 +56,7 @@ class foodTypeTemplate {
         }
     }
 
-    async askUserForFoodType() {
+    async askUserForDishType() {
         const question = "Which dish do you want? (Use the number)";
         return await getUserInputNumberAndLimitNumber(question, this.dishes.length);
     }
@@ -118,13 +118,17 @@ class Calzone extends dishTemplate{
     }
 }
 
+class HamburgerTypes {
+
+}
+
 class FoodFactory {
     /**
      * Map is ordered
      */
     foodTypes = new Map([
         ['PizzaTypes', PizzaTypes],
-
+        ['HamburgerTypes', HamburgerTypes]
     ]);
 
     createFoodType(foodTypeIndex) {
@@ -171,7 +175,7 @@ async function start() {
     console.log(foodIndex);
     const dishFactory = ResturantFactory.createFoodType(foodIndex);
     dishFactory.printDishes();
-    let dishIndex = await dishFactory.askUserForFoodType();
+    let dishIndex = await dishFactory.askUserForDishType();
     dishFactory.getDish(dishIndex).printDish();
 }
 

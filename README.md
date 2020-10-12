@@ -4,12 +4,12 @@ Individuell inlämingsuppgift.
 ## Godkänt
 - [x] Välj 3 valfria designmönster från boken ”Learning JavaScript Design Patterns” https://addyosmani.com/resources/essentialjsdesignpatterns/book/
 - [x] Du ska beskriva med dina egna ord (på svenska) dina 3 olika designmönster.
-- [ ] Skapa ett valfritt utvecklingsprojekt (JavaScript-applikation),där du använder minst ett av dina valda designmönster.
-- [ ] Du behöver dokumentera ditt projekt med dina egna ord och diagram. Modellera några relevanta UML-diagram. Använd Lucidchart.com eller ett annat valfritt modelleringsverktyg
+- [x] Skapa ett valfritt utvecklingsprojekt (JavaScript-applikation),där du använder minst ett av dina valda designmönster.
+- [x] Du behöver dokumentera ditt projekt med dina egna ord och diagram. Modellera några relevanta UML-diagram. Använd Lucidchart.com eller ett annat valfritt modelleringsverktyg
 
 ## VG 
 - [x] Skriv mer djupgående OOAD utifrån ditt eget utvecklingsprojekt. Analysen ska visa på en god förståelse för projektets mål och användarbehov.
-- [ ] Du ska visa en god förståelse för skillnaderna mellan dina 3 designmönster samt deras olika tillämpningsmöjligheter i praktisk programmering.
+- [x] Du ska visa en god förståelse för skillnaderna mellan dina 3 designmönster samt deras olika tillämpningsmöjligheter i praktisk programmering.
 
 # 1. Val av designmönster
 1. Factory Pattern https://addyosmani.com/resources/essentialjsdesignpatterns/book/#factorypatternjavascript
@@ -17,9 +17,17 @@ Individuell inlämingsuppgift.
 3. Constructor Pattern https://addyosmani.com/resources/essentialjsdesignpatterns/book/#constructorpatternjavascript
 
 # 2. Beskriv designmönster med egna ord
+Jag valde designmönster Constructor pattern, Facade pattern och Factory pattern, där Factory- och Constructor-pattern är skapande mönster, medan Facade är ett struktuellt mönster.
+
+## Skillnader mellan designmönster
+Skapande mönster är design mönster som hanterar skapande av objekt, eller initiering av ett objekt, den ska det vill säga lösaa problemet med att på något vis kunna kontrollera objektet som skapas.
+
+Struktuellt mönster är ett design mönster som används för att identifiera och underlätta strukturen av klasser och funktioner genom generella mönster.
+
+Beteende mönster är ett design mönster som används för att hitta vanliga kommunikation mönster mellan olika objekt, så att objekten på ett enkelt sätt kan samspela med varandra utan att vara allt för mycket beroende av varandra. 
 
 ## Factory pattern
-**Factory pattern** är ett designmönster som används för att skapa en instans av en klass och gömma själva instansen för skapandet av objektet för användaren. Detta ger utvecklaren då möjlighet att utöka factoryn utan att befintlig kod blir påverkad.
+**Factory pattern** är ett designmönster som används för att skapa en instans av en klass och gömma själva instansen för skapandet av objektet för användaren. Detta ger utvecklaren då möjlighet att utöka factoryn utan att befintlig kod som använder factoryt blir påverkad.
 
 Praktiskt exempel, tänk dig att du har en hamburgarresturang, där kunder kan beställa olika hamburgare. Där hamburgare har olika innehåll.
 
@@ -186,11 +194,6 @@ var DemoClass = (function() {
 })();
 ```
 
-## Skillnader mellan designmönster
-Jag valde designmönster Constructor pattern, Facade pattern och Factory pattern, där Factory- och Constructor-pattern är skapande mönster, medan Facade är ett struktuellt mönster.
-
-Den största skillnaden mellan mönsterna är att 
-
 # 3. Skapa ett valfritt utvecklingsprojekt
 
 1. Strategy – Den strategiska nivån
@@ -214,7 +217,35 @@ Om jag utökar med andra typer av rätter, så vill jag att klienter ska få vä
 - Skall kunna beställa en typ av rätt.
 - Skall enkelt utökas till andra typer av rätter
 
-## Klassdiagram
-![A picture of aClassDiagram](./ClassDiagram.png)
+## 3. Dokumentation
 
-# 4. Dokumentation
+I utvecklingsprojektet, så är planen att använda mig av designmönstret Factory pattern. Orsaken är att detta designpattern gör det enklare att skapa olika objekt beroende på användarens inmatning av data.
+
+Utöver Factory pattern så kommer jag också använda mig av Facade pattern för att förenkla två komplicerade funktioner, en modul som heter readline med metoden question. Tyvärr är inte readline modulen asynkront så jag behöver göra så att min kod inte fortsätter när denna metod kallas på. Samt så behöver jag ett lättare sätt att kontrollera att användarens inmatade data är validerad.
+
+### Klassdiagram
+Jag upptäckte vid utveckligen av applikationen att både dishTemplate och foodTypeTemplate klasserna behövde metoder att kunna kommunicera med själva användaren, och där av behövde lägga till metoderna: askUserForFoodType och askUserForDishType.
+Där av har jag två versioner av klassdiagrammet:
+
+**Version 1**
+
+![Version 1: En bild på en klassdiagram](./ClassDiagram.png)
+
+**Version 2**
+
+![Version 2: En bild på en klassdiagram](./ClassDiagram2.png)
+### Aktivitetsdiagram
+Aktivitetsdiagrammet beskriver hur användarenens steg för att beställa en rätt.
+
+1. Användaren startar själva applikationen med `node ./app.js`
+2. Applikationen skriver ut en meny, där användaren får välja olika typer av rätter. Just i dagsläget har resturangen bara Pizza.
+3. Applikationen efterfrågar inmatning från användaren om vilken rätttyp användaren vill ha.
+4. Applikationen kontrollerar om inmatningen är korrekt eller inte. Om det inte är korrekt skall applikationen gå tillbaka till punk 3.
+5. Applikationen skapar objektet som användaren har valt.
+6. Applikationen skriver ut vilka rätter som finns att välja.
+7. Applikationen efterfrågar inmatning från användaren om vilken rätt användaren vill ha.
+8. Applikationen kontrollerar om inmatningen är korrekt eller inte. Om det inte är korrekt skall applikationen gå tillbaka till punk 7.
+9. Applikationen skriver ut valet.
+10. Applikationen stängs av.
+
+![En bild på ett aktivitetsdiagram](./Aktivitetsdiagram.png)

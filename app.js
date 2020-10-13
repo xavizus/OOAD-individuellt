@@ -118,17 +118,12 @@ class Calzone extends dishTemplate{
     }
 }
 
-class HamburgerTypes {
-
-}
-
 class FoodFactory {
     /**
      * Map is ordered
      */
     foodTypes = new Map([
-        ['PizzaTypes', PizzaTypes],
-        ['HamburgerTypes', HamburgerTypes]
+        ['PizzaTypes', PizzaTypes]
     ]);
 
     createFoodType(foodTypeIndex) {
